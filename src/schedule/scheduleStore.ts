@@ -3,7 +3,13 @@ import { setHours, startOfHour } from "date-fns";
 import type { FetchSchedule } from "./fetchSchedule";
 import type { RuleSchedule } from "./schema";
 
-export const createScheduleStore = (fetchSchedule: FetchSchedule) => {
+export const createScheduleStore = (
+  fetchSchedule: FetchSchedule
+): {
+  getRegular: (date: Date) => Promise<RuleSchedule>;
+  getBankaraChallenge: (date: Date) => Promise<RuleSchedule>;
+  getBankaraOpen: (date: Date) => Promise<RuleSchedule>;
+} => {
   const regularScheduleCache = new Map<string, RuleSchedule>();
   const bankaraChallengeScheduleCache = new Map<string, RuleSchedule>();
   const bankaraOpenScheduleCache = new Map<string, RuleSchedule>();
