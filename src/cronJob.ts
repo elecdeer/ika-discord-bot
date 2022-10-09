@@ -1,5 +1,5 @@
 import { updateActivity } from "./activity";
-import { scheduleStore } from "./index";
+import { repository, scheduleStore } from "./index";
 import { sendScheduleMessage } from "./message";
 
 export const cronJob = async () => {
@@ -14,12 +14,12 @@ export const cronJob = async () => {
 
   updateActivity(bankaraChallengeSchedule, bankaraOpenSchedule);
 
-  const channels = [
-    {
-      channelId: "1028612907375792188",
-      full: true,
-    },
-  ];
+  const channelEntries = await repository.getAll();
+  const channels = channelEntries.map(([channelId, option]) => ({
+    channelId: channelId,
+    full: option.full,
+  }));
+
   await sendScheduleMessage(channels, {
     regular: regularSchedule,
     bankaraChallenge: bankaraChallengeSchedule,

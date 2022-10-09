@@ -6,7 +6,7 @@ export const createKvsRepository = async (): Promise<Repository> => {
   const storage = await kvsEnvStorage<Record<string, SubscribeOption>>({
     name: "ika-schedule-channels",
     version: 1,
-    storeFilePath: "./store.json",
+    storeFilePath: "./store",
   });
 
   return {
