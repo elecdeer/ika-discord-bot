@@ -3,6 +3,7 @@ import cron from "node-cron";
 
 import { cronJob } from "./cronJob";
 import { env } from "./env";
+import { createKvsRepository } from "./repository/kvsRepository";
 import { createFetchSchedule } from "./schedule/fetchSchedule";
 import { createScheduleStore } from "./schedule/scheduleStore";
 
@@ -21,7 +22,10 @@ const initializeClient = () =>
 
     void client.login(env.discordToken);
   });
+
 export const client = await initializeClient();
+
+export const repository = await createKvsRepository();
 
 export const scheduleStore = createScheduleStore(
   createFetchSchedule(env.fetchEndPoint, env.userAgent)
