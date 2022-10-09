@@ -21,6 +21,9 @@ export const sendScheduleMessage = async (
     bankaraOpen: RuleSchedule;
   }
 ) => {
+  const fullPayload = await createFullSchedulePayload(schedules);
+  const digestPayload = await createDigestSchedulePayload(schedules);
+
   return Promise.all(
     channels.map(async ({ channelId, full }) => {
       const channel = await client.channels.fetch(channelId);
@@ -28,9 +31,9 @@ export const sendScheduleMessage = async (
       if (!channel.isTextBased()) return;
 
       if (full) {
-        await channel.send(await createFullSchedulePayload(schedules));
+        await channel.send(fullPayload);
       } else {
-        await channel.send(await createDigestSchedulePayload(schedules));
+        await channel.send(digestPayload);
       }
     })
   );
