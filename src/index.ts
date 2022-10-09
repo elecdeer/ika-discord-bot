@@ -1,6 +1,9 @@
 import { ActivityType, Client, GatewayIntentBits } from "discord.js";
 import cron from "node-cron";
 
+import { registerCommand } from "./command/registerCommand";
+import { handleSubscribeCommand } from "./command/subscribeCommand";
+import { handleUnsubscribeCommand } from "./command/unsubscribeCommand";
 import { cronJob } from "./cronJob";
 import { env } from "./env";
 import { createKvsRepository } from "./repository/kvsRepository";
@@ -31,6 +34,19 @@ export const scheduleStore = createScheduleStore(
   createFetchSchedule(env.fetchEndPoint, env.userAgent)
 );
 
+client.on("interactionCreate", async (interaction) => {
+  if (interaction.isChatInputCommand()) {
+    if (interaction.commandName === "subscribe") {
+      await handleSubscribeCommand(interaction);
+      return;
+    }
+    if (interaction.commandName === "unsubscribe") {
+      await handleUnsubscribeCommand(interaction);
+      return;
+    }
+  }
+});
+
 const setupCron = () => {
   const scheduleChangeHours = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23];
   cron.schedule(
@@ -38,6 +54,8 @@ const setupCron = () => {
     async () => cronJob
   );
 };
+
+await registerCommand();
 
 setupCron();
 
