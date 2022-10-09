@@ -1,0 +1,40 @@
+{
+  "name": "ika-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot to announce Splatoon3 stage infomation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup",
+    "start": "node --enable-source-maps ./dist/index.mjs",
+    "dev": "npm run build && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elecdeer/ika-discord-bot.git"
+  },
+  "author": "elecdeer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elecdeer/ika-discord-bot/issues"
+  },
+  "homepage": "https://github.com/elecdeer/ika-discord-bot#readme",
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/node": "^18.8.3",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "discord.js": "^14.5.0",
+    "node-cron": "^3.0.2",
+    "zod": "^3.19.1"
+  }
+}
