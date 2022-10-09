@@ -22,6 +22,7 @@
     "@tsconfig/node18": "^1.0.1",
     "@types/node": "^18.8.3",
     "@types/node-cron": "^3.0.4",
+    "@types/sharp": "^0.31.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
@@ -40,6 +41,7 @@
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
     "node-fetch": "^3.2.10",
+    "sharp": "^0.31.1",
     "zod": "^3.19.1"
   }
 }
