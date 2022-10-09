@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 export type ScheduleAPIRes = z.infer<typeof scheduleAPISchema>;
+export type Stage = z.infer<typeof stageSchema>;
+export type RuleSchedule = z.infer<typeof ruleScheduleSchema>;
 
 const preprocessDate = (dateStr: unknown) => {
   if (typeof dateStr === "string") {

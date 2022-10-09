@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsup",
-    "start": "node --enable-source-maps ./dist/index.mjs",
+    "start": "node --enable-source-maps --trace-uncaught ./dist/index.mjs",
     "dev": "npm run build && npm run start"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/node": "^18.8.3",
+    "@types/node-cron": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
@@ -35,8 +36,9 @@
   "dependencies": {
     "date-fns": "^2.29.3",
     "discord.js": "^14.5.0",
-    "dot-env": "^0.0.1",
+    "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
+    "node-fetch": "^3.2.10",
     "zod": "^3.19.1"
   }
 }
